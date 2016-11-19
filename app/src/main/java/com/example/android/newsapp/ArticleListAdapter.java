@@ -42,6 +42,10 @@ public class ArticleListAdapter extends ArrayAdapter<Article> {
 
         final Article currentArticle = getItem(position);
 
+        TextView circleTextView = (TextView) convertView.findViewById(R.id.circle);
+        String circleLetter = currentArticle.getCircleLetter();
+        circleTextView.setText(circleLetter);
+
         TextView articleTitleTextView = (TextView) convertView.findViewById(R.id.article_title);
         String articleTitle = currentArticle.getWebTitle();
         articleTitleTextView.setText(articleTitle);

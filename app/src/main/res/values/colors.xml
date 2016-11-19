@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Primary color of the app (shown in the app bar) -->
-    <color name="colorPrimary">#2B3D4D</color>
+    <color name="colorPrimary">#0D47A1</color>
 
     <!-- Primary dark color of the app (shown in the status bar) -->
-    <color name="colorPrimaryDark">#23303D</color>
+    <color name="colorPrimaryDark">#212121</color>
 
     <!-- Primary dark color of the app (shown in the status bar) -->
     <color name="colorAccent">#23303D</color>
@@ -18,4 +18,6 @@
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="border_color">#9FA8DA</color>
+
+    <color name="circle_color">#0D47A1</color>
 </resources>

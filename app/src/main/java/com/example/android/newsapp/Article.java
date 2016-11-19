@@ -37,4 +37,9 @@ public class Article {
     public String getWebTitle() { return mWebTitle; }
 
     public String getWebUrl() { return mWebUrl; }
+
+    public String getCircleLetter() {
+        String letterForCircle = mSectionName.substring(0,2);
+        return letterForCircle;
+    }
 }
