@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">News App</string>
+    <string name="app_name"></string>
     <string name="empty_list">No books found. Try another topic.</string>
     <string name="no_connection_message">No internet connection found</string>
 </resources>
