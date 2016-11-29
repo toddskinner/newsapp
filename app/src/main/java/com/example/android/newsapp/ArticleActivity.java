@@ -2,6 +2,7 @@ package com.example.android.newsapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.LoaderManager;
 import android.content.Loader;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +26,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.key;
+
 
 public class ArticleActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<Article>>{
 
@@ -33,8 +37,11 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
     private ProgressBar progressBar;
 
     /** URL for book data from the Google Books API */
-    private String GUARDIAN_API_REQUEST_URL =
-            "http://content.guardianapis.com/search?&api-key=47ca4388-28bd-4e95-ad34-b6390a455847";
+    private String GUARDIAN_API_REQUEST_URL = "http://content.guardianapis.com/search?&api-key=47ca4388-28bd-4e95-ad34-b6390a455847";
+
+    private String GUARDIAN_BASE_API_REQUEST_URL = "http://content.guardianapis.com/search?q=";
+
+    //
 
     /** to be combined with the search term provided by the editText box *//*
     private static final String GOOGLE_BOOKS_REQUEST_URL_PART1 =
@@ -118,7 +125,18 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
         //Log.e("oncreate","Run onCreateLoader");
-        return new ArticleLoader(this, GUARDIAN_API_REQUEST_URL);
+
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String apiKey = "47ca4388-28bd-4e95-ad34-b6390a455847";
+        String articleTopic = sharedPrefs.getString(
+                getString(R.string.settings_topic_key),
+                getString(R.string.settings_topic_default));
+        Uri baseUri = Uri.parse(GUARDIAN_BASE_API_REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+
+        uriBuilder.appendQueryParameter("q", articleTopic);
+        uriBuilder.appendQueryParameter("api-key", apiKey);
+        return new ArticleLoader(this, uriBuilder.toString());
     }
 
     @Override
