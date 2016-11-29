@@ -34,7 +34,7 @@ public class ArticleActivity extends AppCompatActivity implements LoaderManager.
 
     /** URL for book data from the Google Books API */
     private String GUARDIAN_API_REQUEST_URL =
-            "http://content.guardianapis.com/search?&api-key=test";
+            "http://content.guardianapis.com/search?&api-key=47ca4388-28bd-4e95-ad34-b6390a455847";
 
     /** to be combined with the search term provided by the editText box *//*
     private static final String GOOGLE_BOOKS_REQUEST_URL_PART1 =
